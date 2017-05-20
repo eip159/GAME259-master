@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пароль</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="bundle.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<style>
+    .field
+    {
+        width: 1200px;
+        height: 800px;
+        background: gray;
+        position: relative;
+    }
+    .ball
+    {
+        position: absolute;
+        border: 1px solid red;
+        border-radius: 32px;
+    }
+</style>
+
+<body ng-app="App" ng-controller="Chat">
+<!--<input type="text" ng-model="msg">
+<button ng-click="send(msg)">Send</button>
+<ul>
+    <li ng-repeat="m in messages">{{m.name}}</li>
+</ul>-->
+
+<div class="soob" ng-repeat="m in messages track by $index">{{m.text}}</div>
+<br>
+
+<div class="form">
+    <input ng-disabled='name' ng-model="name" ng-model-options="{ updateOn: 'blur' }" class="text" placeholder="Введите ваш Ник" require><br><br>
+
+    <input ng-disabled='!name' ng-keydown='isTyping()' class="text" ng-model="message" placeholder="Введите сообщение">
+    <button ng-disabled='!name' class="but" ng-click="Send()">Отправить</button> <br> <br>
+    <div ng-show='typing' ng-repeat="m in usersTyping track by $index">{{m}}пишет сообщение...</div>
+    <!--{{messages}}-->
+
+</div>
+
+
+{{player}}
+<br>
+{{offsetX}}
+<br>
+{{offsetY}}
+
+<div ng-controller="Chat">
+<div class="field" ng-click="StartMoving( $event.offsetX,  $event.offsetY)">
+    <div ng-repeat="plr in players " ng-style="{left:plr.x+'px', top:plr.y+'px', opacity:plr.opacity, width: plr.size + 'px', height: plr.size + 'px'}" class="ball">{{plr.id}}</div>
+</div>
+</div>
+</body>
+</html>

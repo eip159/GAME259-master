@@ -1,0 +1,25 @@
+{
+  "name": "socket-chat-example",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "express": "4.3.1",
+    "pm2": "^2.4.5",
+    "socket.io": "1.0.2",
+    "underscore": "^1.8.3",
+    "webpack": "^2.5.1"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node_modules\\.bin\\pm2 start index.js --watch",
+    "stop": "node_modules\\.bin\\pm2 stop 0",
+    "logs": "node_modules\\.bin\\pm2 logs",
+    "webpack": "./node_modules/.bin/webpack --config webpack.config.js --progress --watch",
+    "progress": "./node_modules/.bin/webpack --config webpack.config.js --progress --watch",
+    "startall": "node_modules/.bin/webpack-dev-server --open"
+  },
+  "author": "",
+  "license": "ISC"
+}
